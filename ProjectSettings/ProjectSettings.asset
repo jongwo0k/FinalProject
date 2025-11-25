@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 27
-  productGUID: 7c8add3911a155a4e8553a12d403e482
+  productGUID: 6c400051fcc06614fb28e7496debbd8c
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: FinalProject
+  productName: FN Project
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -686,14 +686,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: FinalProject
+  metroPackageName: FN Project
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: FinalProject
+  metroApplicationDescription: FN Project
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -765,11 +765,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: d8ba48bb-bba0-4a26-8534-38fac3df2bc2
+  cloudProjectId: 02c05f63-de50-4b2c-ab2d-54e628a3f452
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: FinalProject
-  organizationId: jgfkjdlfkg
+  projectName: FN Project 2025-11-25_14-05-52
+  organizationId: unity_wdz8og8kqmc03w
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

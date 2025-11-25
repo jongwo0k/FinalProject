@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HumanoidBoss.unity
     guid: b40836a0eea3663439bc987c3a303822
+  - enabled: 1
+    path: Assets/Scenes/SampleScene_ship.unity
+    guid: 6bdacf2a146623a43bf1500c52150085
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

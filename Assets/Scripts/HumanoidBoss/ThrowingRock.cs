@@ -27,7 +27,7 @@ public class ThrowingRock : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         // Bullet, Boss 자신 등과는 충돌X -> Layer or Tag
-        if (other.CompareTag("Boss"))
+        if (other.CompareTag("Boss") || other.CompareTag("Rock"))
         {
             return;
         }
@@ -53,6 +53,13 @@ public class ThrowingRock : MonoBehaviour
         playerDirection = dir;
         isThrow = true;
         // Destroy -> DestroyZone or 좌표 or 시간
+    }
+
+    public void Throw(Vector3 dir, float newSpeed) // 속도 변경
+    {
+        playerDirection = dir;
+        rockSpeed = newSpeed;
+        isThrow = true;
     }
 
     // 충돌 후 파괴

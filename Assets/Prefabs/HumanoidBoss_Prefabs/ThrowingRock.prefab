@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4209226355409047607}
   m_Layer: 0
   m_Name: ThrowingRock
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,6 +149,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa1650a3e31ec24380d23f0dd4dce3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damage: 10
+  rockSpeed: 10
   fracturePrefab: {fileID: 4760929305878468711, guid: 3e0ed220d2a42844d914decbc837fc69, type: 3}

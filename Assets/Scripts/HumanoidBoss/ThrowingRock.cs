@@ -4,7 +4,7 @@ public class ThrowingRock : MonoBehaviour
 {
     [Header("Ability")]
     [SerializeField] private float rockSpeed = 10f;
-    // [SerializeField] private float rockDamage = 10f;
+    [SerializeField] private float rockDamage = 10f;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject fracturePrefab;
@@ -14,10 +14,7 @@ public class ThrowingRock : MonoBehaviour
 
     void Update()
     {
-        if (!isThrow)
-        {
-            return;
-        }
+        if (!isThrow) return;
 
         transform.Translate(playerDirection * rockSpeed * Time.deltaTime, Space.World);
         transform.Rotate(Vector3.right * 360 * Time.deltaTime);
@@ -27,7 +24,7 @@ public class ThrowingRock : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         // Bullet, Boss 자신 등과는 충돌X -> Layer or Tag
-        if (other.CompareTag("Boss"))
+        if (other.CompareTag("Boss") || other.CompareTag("Rock"))
         {
             return;
         }
@@ -42,17 +39,18 @@ public class ThrowingRock : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player 명중");
-            // playerHP -= rockDamage;
+            // Player쪽에서 값만 받아서 데미지 처리
         }
-        
+
         FractureRock();
     }
 
-    public void Throw(Vector3 dir) // Player방향, Boss한테 받음
+    public void Throw(Vector3 dir, float newSpeed, float newDamage) // 속도, 데미지 패턴별로 다르게
     {
         playerDirection = dir;
+        rockSpeed = newSpeed;
+        rockDamage = newDamage;
         isThrow = true;
-        // Destroy -> DestroyZone or 좌표 or 시간
     }
 
     // 충돌 후 파괴

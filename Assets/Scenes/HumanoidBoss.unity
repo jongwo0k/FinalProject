@@ -1413,9 +1413,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2395439447496268305, guid: cdfbba40ef5485642b2304cf506c9f7a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2182852911111655986}
-    - targetCorrespondingSourceObject: {fileID: 2395439447496268305, guid: cdfbba40ef5485642b2304cf506c9f7a, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2182852911111655985}
   m_SourcePrefab: {fileID: 100100000, guid: cdfbba40ef5485642b2304cf506c9f7a, type: 3}
 --- !u!1 &2182852911111655984 stripped
@@ -1435,27 +1432,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efaf9dbebdeb3af4d8db248b89a7bf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 100
+  patternCooltime: 5
+  rockPrefab: {fileID: 4209226355409047607, guid: 2a7a11113a7188c43a43008fa22dca7a, type: 3}
+  throwAttackDamage: 30
+  throwAttackSpeed: 30
   player: {fileID: 951848818}
   handPos: {fileID: 455414550}
   attackRadius: 2
-  spawnCount: 2
-  rockSpreadAngle: 3
-  spawnPos: {fileID: 1226917060}
-  rockPrefab: {fileID: 4209226355409047607, guid: 2a7a11113a7188c43a43008fa22dca7a, type: 3}
+  jumpAttackDamage: 20
   redZonePrefab: {fileID: 6688878854987637600, guid: 536d2e60e8ad6cd4e998a7a15dd40628, type: 3}
-  patternCooltime: 5
---- !u!114 &2182852911111655986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2182852911111655984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9905ae5fef322bc49a682ff36613edfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  jumpAttackEffect: {fileID: 2400397776686826457, guid: 8dab4399c2e7cd64f8009cd1f7b79c89, type: 3}
+  rockSpreadAngle: 3
+  roarAttackDamage: 10
+  roarAttackSpeed: 30
+  spawnPos: {fileID: 1226917060}
 --- !u!4 &2182852911111655987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5849367317727736694, guid: cdfbba40ef5485642b2304cf506c9f7a, type: 3}

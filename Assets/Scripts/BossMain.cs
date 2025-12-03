@@ -1,6 +1,7 @@
 using UnityEngine;
+using System.Collections;
 
-public class Boss : MonoBehaviour
+public abstract class Boss : MonoBehaviour
 {
     [Header("Status")]
     [SerializeField] protected float HP = 100; // 임의
@@ -11,33 +12,57 @@ public class Boss : MonoBehaviour
     protected Animator anim;
     protected Collider col;
 
-    /*
-    [SerializeField] protected Transform player; // 플레이어 위치
+    
+    // [SerializeField] protected Transform player; // 플레이어 위치
 
     // 코루틴 공통 관리
     protected Coroutine attackRoutine;
 
     protected virtual void OnEnable()
     {
-        attackRoutine = StartCoroutine(AttackRoutine());
+        if (attackRoutine == null)
+        {
+            attackRoutine = StartCoroutine(AttackRoutine());
+        }
     }
 
     protected virtual void OnDisable()
     {
-        if (attackRoutine != null) StopCoroutine(attackRoutine);
+        if (attackRoutine != null)
+        {
+            StopCoroutine(attackRoutine);
+            attackRoutine = null;
+        }
     }
 
     protected abstract IEnumerator AttackRoutine();
-    */
+    
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         isDead = false;
         currentHP = HP;
         anim = GetComponent<Animator>();
         col = GetComponent<Collider>();
+    }
 
-        // UI 초기화
+    protected virtual void Start()
+    {
+        UpdateUI();
+    }
+
+    // Bullet에 맞으면 HP 감소
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            if (!isDead)
+            {
+                float bulletDamage = 1; // (1=임시) Player의 Bullet에서 데미지 가져옴
+                TakeDamage(bulletDamage);
+            }
+            Destroy(other.transform.parent.gameObject); // Empty안에 Bullet(Capsule)이 들어 있을 경우 전부 삭제, 부모 Empty없으면 Destroy(other.gameObject);
+        }
     }
 
     // 피격 처리
@@ -67,13 +92,15 @@ public class Boss : MonoBehaviour
         isDead = true;
         anim.SetBool("isDead", true);
         col.enabled = false;
-
-        GameManager.Instance.StageClear();
     }
 
     // Event에서
     public void DestroyBoss()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.StageClear();
+        }
         Destroy(gameObject);
     }
 }

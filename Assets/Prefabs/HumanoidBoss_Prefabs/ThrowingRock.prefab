@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1685393217983753322}
   - component: {fileID: 3976195925465685816}
   - component: {fileID: 1446868226230224232}
-  - component: {fileID: 2333611902705334658}
   - component: {fileID: 7929220304021265591}
   - component: {fileID: 4209226355409047607}
+  - component: {fileID: 5588880893992199917}
   m_Layer: 0
   m_Name: ThrowingRock
   m_TagString: Rock
@@ -88,28 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2333611902705334658
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4189348176141142}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6938710573835471721, guid: ba8ad55c52432c9458973a60328b3451, type: 3}
 --- !u!54 &7929220304021265591
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,3 +129,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rockSpeed: 10
   fracturePrefab: {fileID: 4760929305878468711, guid: 3e0ed220d2a42844d914decbc837fc69, type: 3}
+--- !u!136 &5588880893992199917
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4189348176141142}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4497352
+  m_Height: 2.9602487
+  m_Direction: 1
+  m_Center: {x: 0.31063223, y: -0.057092547, z: -0.33143878}

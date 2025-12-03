@@ -7,29 +7,32 @@ public class HumanoidBoss : Boss
 
     [Header("Throwing Pattern")]
     [SerializeField] private ThrowingRock rockPrefab;
+    [SerializeField] private float throwAttackDamage = 30;
+    [SerializeField] private float throwAttackSpeed = 10;
     [SerializeField] private Transform player;
     [SerializeField] private Transform handPos; // 돌 생성 위치
 
     [Header("Jump Pattern")]
     [SerializeField] private float attackRadius = 2f; // 공격 범위
-    // [SerializeField] private float jumpAttackDamage = 10;
+    [SerializeField] private float jumpAttackDamage = 20;
     [SerializeField] private GameObject redZonePrefab;
+    [SerializeField] private GameObject jumpAttackEffect;
     private GameObject currentRedZone;
     private Vector3 jumpTarget;
 
     [Header("Roar Pattern")]
     [SerializeField] private float rockSpreadAngle = 3f;
+    [SerializeField] private float roarAttackDamage = 10;
+    [SerializeField] private float roarAttackSpeed = 20;
     [SerializeField] private Transform spawnPos; // 돌 생성 위치
 
     protected override void Start()
     {
         base.Start();
-
-        StartCoroutine(AttackRoutine());
     }
 
     // 공격 패턴
-    IEnumerator AttackRoutine()
+    protected override IEnumerator AttackRoutine()
     {
         while (!isDead)
         {
@@ -56,6 +59,8 @@ public class HumanoidBoss : Boss
     // 돌 던지기 (-> ObjectPooling?)
     private void ThrowRockPattern()
     {
+        if (player == null) return;
+
         anim.SetTrigger("Throw");
         // 던질 때 추가 효과?
     }
@@ -67,12 +72,14 @@ public class HumanoidBoss : Boss
 
         ThrowingRock rockInstance = Instantiate(rockPrefab, handPos.position, Quaternion.identity);
 
-        rockInstance.Throw(dir);
+        rockInstance.Throw(dir, throwAttackSpeed, throwAttackDamage);
     }
 
     // 점프 후 공격
     private void JumpAttackPattern()
     {
+        if (player == null) return;
+
         jumpTarget = player.position;
         jumpTarget.y = 0.01f;
         currentRedZone = Instantiate(redZonePrefab, jumpTarget, Quaternion.identity);
@@ -88,18 +95,23 @@ public class HumanoidBoss : Boss
             Destroy(currentRedZone);
         }
 
+        // 바닥 이펙트
+        Instantiate(jumpAttackEffect, jumpTarget, Quaternion.identity);
+
         // 범위 내에 있으면 데미지
         float distance = Vector3.Distance(player.position, jumpTarget);
         if (distance <= attackRadius)
         {
             Debug.Log("Player 회피 실패");
-            // playerHP -= jumpAttackDamage;
+            // jumpAttackDamage를 Player쪽 TakeDamage에 전달;
         }
     }
 
     // 포효하기 (좌우로 돌 소환)
     private void RoarPattern()
     {
+        if (player == null) return;
+
         anim.SetTrigger("Roar");
     }
 
@@ -114,7 +126,7 @@ public class HumanoidBoss : Boss
         ThrowingRock leftRock = Instantiate(rockPrefab, spawnPoint, Quaternion.identity);
         ThrowingRock rightRock = Instantiate(rockPrefab, spawnPoint, Quaternion.identity);
 
-        leftRock.Throw(leftDir, 20f);
-        rightRock.Throw(rightDir, 20f);
+        leftRock.Throw(leftDir, roarAttackSpeed, roarAttackDamage);
+        rightRock.Throw(rightDir, roarAttackSpeed, roarAttackDamage);
     }
 }

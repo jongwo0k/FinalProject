@@ -12,8 +12,8 @@ public abstract class Boss : MonoBehaviour
     protected Animator anim;
     protected Collider col;
 
-    
-    // [SerializeField] protected Transform player; // 플레이어 위치
+    [SerializeField] protected Transform player; // Player 현재 위치
+
 
     // 코루틴 공통 관리
     protected Coroutine attackRoutine;

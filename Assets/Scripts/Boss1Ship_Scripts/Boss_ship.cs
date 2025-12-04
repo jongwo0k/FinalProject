@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class Boss_ship : MonoBehaviour
+public class Boss_ship : Boss
 {
     // 보스 상태 정의
     public enum BossState { Idle, Pattern1, Pattern2, Pattern3, Pattern4, Pattern5, Pattern6 }
 
     // 위치 및 프리팹 참조
-    public Transform player;
+    // public Transform player; BossMain에서 같이 처리
     public Transform fireLeft;
     public Transform fireRight;
     public Transform fireCenter;
@@ -61,56 +61,36 @@ public class Boss_ship : MonoBehaviour
     public float p5_bulletLife = 3.5f;
 
     BossState _state = BossState.Idle;
-    Coroutine _mainLoop;
+    // Coroutine _mainLoop; AttackRoutine에 통합
     Coroutine _p1Loop;
     Vector3 _spawnPos;
-    bool _isRunning;
+    // bool _isRunning;     isDead에 통합
 
-    void Awake()
+    protected override void OnDisable()
     {
-        _spawnPos = transform.position;
-    }
+        base.OnDisable();
 
-    void OnEnable()
-    {
-        StartBoss();
-    }
-
-    void OnDisable()
-    {
-        StopBoss();
-    }
-
-    // 보스 동작 시작
-    public void StartBoss()
-    {
-        StopBoss();
-        _isRunning = true;
-        _mainLoop = StartCoroutine(MainLoop());
-    }
-
-    // 보스 동작 정지
-    public void StopBoss()
-    {
-        _isRunning = false;
-
+        // p1 별도 Loop 유지
         if (_p1Loop != null)
         {
             StopCoroutine(_p1Loop);
             _p1Loop = null;
         }
+    }
 
-        if (_mainLoop != null)
-        {
-            StopCoroutine(_mainLoop);
-            _mainLoop = null;
-        }
+    protected override void Awake()
+    {
+        base.Awake();
+        _spawnPos = transform.position;
+    }
 
-        _state = BossState.Idle;
+    protected override void Start()
+    {
+        base.Start();
     }
 
     // 메인 패턴 루프
-    IEnumerator MainLoop()
+    protected override IEnumerator AttackRoutine()
     {
         yield return new WaitForSeconds(0.5f);
         do
@@ -159,7 +139,7 @@ public class Boss_ship : MonoBehaviour
 
             yield return new WaitForSeconds(patternGap);
 
-        } while (_isRunning && loopPatterns);
+        } while (!isDead && loopPatterns);
 
         if (_p1Loop != null)
         {

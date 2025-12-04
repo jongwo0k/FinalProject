@@ -9,7 +9,6 @@ public class HumanoidBoss : Boss
     [SerializeField] private ThrowingRock rockPrefab;
     [SerializeField] private float throwAttackDamage = 30;
     [SerializeField] private float throwAttackSpeed = 10;
-    [SerializeField] private Transform player;
     [SerializeField] private Transform handPos; // 돌 생성 위치
 
     [Header("Jump Pattern")]
@@ -25,6 +24,12 @@ public class HumanoidBoss : Boss
     [SerializeField] private float roarAttackDamage = 10;
     [SerializeField] private float roarAttackSpeed = 20;
     [SerializeField] private Transform spawnPos; // 돌 생성 위치
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     protected override void Start()
     {

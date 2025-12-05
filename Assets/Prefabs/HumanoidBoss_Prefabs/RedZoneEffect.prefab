@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2764218212192220744}
   - component: {fileID: 3457124018743350758}
   m_Layer: 0
-  m_Name: JumpAttackEffect
+  m_Name: RedZoneEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

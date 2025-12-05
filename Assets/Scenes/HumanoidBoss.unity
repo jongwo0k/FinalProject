@@ -1433,20 +1433,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
+  player: {fileID: 951848818}
   patternCooltime: 5
   rockPrefab: {fileID: 4209226355409047607, guid: 2a7a11113a7188c43a43008fa22dca7a, type: 3}
   throwAttackDamage: 30
   throwAttackSpeed: 30
-  player: {fileID: 951848818}
   handPos: {fileID: 455414550}
-  attackRadius: 2
-  jumpAttackDamage: 20
-  redZonePrefab: {fileID: 6688878854987637600, guid: 536d2e60e8ad6cd4e998a7a15dd40628, type: 3}
-  jumpAttackEffect: {fileID: 2400397776686826457, guid: 8dab4399c2e7cd64f8009cd1f7b79c89, type: 3}
   rockSpreadAngle: 3
   roarAttackDamage: 10
   roarAttackSpeed: 30
   spawnPos: {fileID: 1226917060}
+  jumpAttackRadius: 2
+  jumpAttackDamage: 20
+  redZonePrefab: {fileID: 6688878854987637600, guid: 536d2e60e8ad6cd4e998a7a15dd40628, type: 3}
+  redZoneEffect: {fileID: 2400397776686826457, guid: 8dab4399c2e7cd64f8009cd1f7b79c89, type: 3}
+  redZoneCount: 3
+  magicAttackRadius: 1
+  magicAttackDamage: 10
+  magicSpawnRange: 1
+  magicSpawnInterval: 0.7
+  magicExplodeDelay: 0.5
 --- !u!4 &2182852911111655987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5849367317727736694, guid: cdfbba40ef5485642b2304cf506c9f7a, type: 3}
